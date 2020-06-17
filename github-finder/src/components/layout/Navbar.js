@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-export class Navbar extends Component {
+class Navbar extends Component {
     //@reserved attribute (you cannot change its name ) 
     static defaultProps = {
         title: "GitHub Finder",
