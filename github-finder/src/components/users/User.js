@@ -1,22 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
 import UserItem from './UserItem'
-class User extends Component {
-    userStyle = {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4,1fr)',
-        gridGap: '2rem'
+import Spinner from '../layout/Spinner'
+const userStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4,1fr)',
+    gridGap: '2rem'
+}
+
+const User = (props) => {
+
+    if (props.loading) {
+        return <Spinner />
     }
-
-    render() {
-
+    else {
         return (
-            <div style={this.userStyle}>
-                {this.props.users.map(user => (
+            <div style={userStyle}>
+                {props.users.map(user => (
                     <UserItem key={user.id} user={user} />
                 ))}
             </div>
         )
     }
+
+
 }
 
 export default User
