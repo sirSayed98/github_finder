@@ -7,7 +7,8 @@ export class Search extends Component {
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.text)
+        this.props.searchUsers(this.state.text);//prop up
+        //this.setState({ text: " " })
     }
 
     render() {
@@ -19,7 +20,8 @@ export class Search extends Component {
                         value={this.state.text}
                         onChange={this.onChange}
                     />
-                    <input type="submit" value="Serach" className="btn btn-dark btn-block" />
+
+                    <input type="submit" value="Serach" className="btn btn-dark btn-block" disabled={!this.state.text} />
                 </form>
             </div>
         )
