@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const Navbar = (props) => {
     //@reserved attribute (you cannot change its name ) 
     return (
         <nav className="navbar bg-dark" >
             <h1>
-                <i className={props.icon}>  {props.title}</i>
+                <Link to={'/'}> <i className={props.icon}>  {props.title}</i></Link>
             </h1>
             <ul>
                 <li> <Link to="/">Home</Link></li>

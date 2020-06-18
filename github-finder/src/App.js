@@ -12,6 +12,7 @@ import './App.css';
 class App extends Component {
   state = {
     users: [],
+    repos: [],
     user: {},
     loading: false,
     alert: null
@@ -41,6 +42,14 @@ class App extends Component {
     if (this.state.users.length > 0)
       this.setState({ alert: null })
   }
+  getUserRepos = async (username) => {
+    this.setState({ loading: true });
+    const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=100&sort=created&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+    this.setState({ loading: false, repos: res.data })
+
+    if (this.state.users.length > 0)
+      this.setState({ alert: null })
+  }
 
   //clear search
   clearUsers = () => this.setState({ users: [], loading: false, })
@@ -50,6 +59,7 @@ class App extends Component {
     //setTimeout(() => this.setState({ alert: null }), 3000) 
     // another solution to hide flash message
   }
+
   render() {
     return (
       <Router>
@@ -74,7 +84,9 @@ class App extends Component {
                 <User
                   user={this.state.user}
                   getUser={this.getUser}
+                  getUserRepos={this.getUserRepos}
                   loading={this.state.loading}
+                  repos={this.state.repos}
                   {...props}
                 />
               )}></Route>

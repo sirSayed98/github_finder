@@ -34,7 +34,7 @@ export class Search extends Component {
 
                     <input type="submit"
                         value="Serach"
-                        className="btn btn-dark btn-block"
+                        className="btn btn-danger btn-block"
                     />
                     {
                         this.props.showClear &&

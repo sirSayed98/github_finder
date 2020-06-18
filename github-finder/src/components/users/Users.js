@@ -12,6 +12,9 @@ const Users = (props) => {
     if (props.loading) {
         return <Spinner />
     }
+    // else if (props.users.length === 0) {
+    //     return <h1 className="my-3 lead text-center">No available Profiles..try again</h1>
+    // }
     else {
         return (
             <div style={userStyle}>
